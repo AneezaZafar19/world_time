@@ -4,11 +4,12 @@ import 'package:world_time/pages/choose_location.dart';
 import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
-    //initialRoute: '/home',
+    initialRoute: '/loading',
     routes: {
       '/':(context)=>Home(),
-      '/location':(context)=>ChooseLocation(),
       '/loading':(context)=>Loading(),
+      '/location':(context)=>ChooseLocation(),
+
     },
   ));
 }
