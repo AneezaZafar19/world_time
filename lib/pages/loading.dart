@@ -7,12 +7,23 @@ class Loading extends StatefulWidget {
   _LoadingState createState() => _LoadingState();
 }
 class _LoadingState extends State<Loading> {
-  void getData() async{
-    Uri url=Uri.parse('https://jsonplaceholder.typicode.com/todos/1');
+  void getTime() async{
+    //Uri url=Uri.parse('https://jsonplaceholder.typicode.com/todos/1');
+    Uri url=Uri.parse('http://worldtimeapi.org/api/ip');
     Response response = await get(url); //before storing the data comes from url we write await so that to store data it can wait for data to get
     Map data=jsonDecode(response.body);
     print(data);
-    print(data['completed']);
+    //get properties from data
+    String datetime=data['datetime'];
+    //String offset=data['utc_offset'];
+    print(datetime);
+    //print(offset);
+    String offset=data['utc_offset'].substring(1,3);
+    //create datetime object
+    DateTime now=DateTime.parse(datetime);
+    now=now.add(Duration(hours: int.parse(offset)));
+    print(now);
+    //print(data['completed']);
     // await Future.delayed(Duration(seconds: 3),(){
     //   print("aneeza");
     // }
@@ -25,7 +36,7 @@ class _LoadingState extends State<Loading> {
   }
   void initState(){
     super.initState();
-    getData();
+    getTime();
   }
   @override
   Widget build(BuildContext context) {
