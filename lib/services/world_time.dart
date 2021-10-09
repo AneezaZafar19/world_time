@@ -15,11 +15,11 @@ Future<void> getTime() async {
     Response response = await get(
         url); //before storing the data comes from url we write await so that to store data it can wait for data to get
     Map data = jsonDecode(response.body);
-    print(data);
+    //print(data);
 
     //get properties from data
     String datetime = data['datetime'];
-    print(datetime);
+    //print(datetime);
     String offset = data['utc_offset'].substring(1, 3);
 
     //create datetime object
@@ -47,4 +47,4 @@ Future<void> getTime() async {
   };
 }}
 
-WorldTime instance = WorldTime(location: 'Karachi',flag: 'germany.png',url1: 'Asia/Karachi');
+//WorldTime instance = WorldTime(location: 'Karachi',flag: 'germany.png',url1: 'Asia/Karachi');
